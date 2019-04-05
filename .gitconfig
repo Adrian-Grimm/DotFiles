@@ -1,0 +1,12 @@
+[user]
+	name = Adrian Grimm
+[credential]
+	username = Adrian-Grimm@github.com
+	helper = store
+[core]
+	editor = emacs
+[mergetool "smerge"]
+	cmd = smerge.exe mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
+[merge]
+	tool = smerge
