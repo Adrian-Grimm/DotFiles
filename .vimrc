@@ -2,6 +2,7 @@ colorscheme slate
 set guifont=OperatorMonoLig\ NF:h16
 set number
 highlight LineNr ctermfg=darkgrey ctermbg=none
+set ic is
 
 " VIM Plug - https://github.com/junegunn/vim-plug
 " To download and install:
