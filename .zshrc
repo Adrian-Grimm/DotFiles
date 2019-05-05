@@ -9,6 +9,8 @@ export LANG=en_US.UTF-8
 #For TMUX without OhMyZsh TMUX-Plugin
 #Enabling Color Prompts
 #export TERM="screen-256color"
+export TERM="xterm-256color"
+
 #Autostart Tmux or attach if already running
 #if [ "$TMUX" = "" ]
 #then
