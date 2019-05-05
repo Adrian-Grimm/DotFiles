@@ -35,18 +35,26 @@ alias git status='nocorrect git status'
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 POWERLEVEL9K_MODE='nerdfont-complete'
 #PL-Promt
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir_writable dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs command_execution_time ram virtualenv rbenv rvm time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon vi_mode context dir_writable dir rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs command_execution_time virtualenv rbenv rvm time)
+#ram
 # Double-Lined Prompt
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{014}╭%F{cyan}"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{014}\u2570%F{cyan}\uF460%F{073}\uF460%F{109}\uF460%f "
+# VI Mode
+POWERLEVEL9K_VI_INSERT_MODE_STRING='INS'
+POWERLEVEL9K_VI_COMMAND_MODE_STRING='CMD'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='green'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='blue'
 # Status
 POWERLEVEL9K_STATUS_VERBOSE=true
 POWERLEVEL9K_STATUS_CROSS=true
 # Time
-POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %d.%m.%y}"
+POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
 POWERLEVEL9K_TIME_BACKGROUND='blue'
 # Context
 POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
@@ -83,9 +91,12 @@ antigen bundle colored-man-pages
 antigen bundle web-search
 antigen bundle rand-quote
 
+# VI-Mode
+antigen bundle vi-mode
+
 # TMUX
 antigen bundle tmux
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=false
 #ZSH_TMUX_ITERM2=true
 ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOCONNECT=true
@@ -93,7 +104,7 @@ ZSH_TMUX_AUTOCONNECT=true
 # Syntax highlighting bundle.
 #antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zdharma/fast-syntax-highlighting
-
+#antigen bundle trapd00r/LS_COLORS
 antigen bundle colored-man-pages
 
 #Autocomplete
