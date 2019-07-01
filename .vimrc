@@ -1,6 +1,13 @@
 colorscheme slate
 set guifont=OperatorMonoLig\ NF:h16
-set number
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 set ic is
 highlight LineNr ctermfg=darkgrey ctermbg=none
 
