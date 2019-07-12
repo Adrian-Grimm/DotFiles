@@ -81,18 +81,20 @@ source ~/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
+# VI-Mode
+bindkey -v
+antigen bundle vi-mode
+
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 #antigen bundle git
-antigen bundle git-flow
+#antigen bundle git-flow
 antigen bundle copydir
 antigen bundle colorize
 antigen bundle command-not-found
 antigen bundle colored-man-pages
 antigen bundle web-search
 antigen bundle rand-quote
-
-# VI-Mode
-antigen bundle vi-mode
+antigen bundle zsh_reload
 
 # TMUX
 antigen bundle tmux
@@ -100,19 +102,29 @@ ZSH_TMUX_AUTOSTART=false
 #ZSH_TMUX_ITERM2=true
 ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOCONNECT=true
+#antigen bundle tmuxinator
+
+# Autocomplete
+antigen bundle zsh-users/zsh-autosuggestions
+
+# Extra zsh completions
+antigen bundle zsh-users/zsh-completions
+
+# CD completion 
+antigen bundle Vifon/deer
+autoload -U deer
+zle -N deer
+bindkey '\ek' deer
+
+# History
+antigen bundle zdharma/history-search-multi-word
+#antigen bundle zsh-users/zsh-history-substring-search
 
 # Syntax highlighting bundle.
 #antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zdharma/fast-syntax-highlighting
 #antigen bundle trapd00r/LS_COLORS
 antigen bundle colored-man-pages
-
-#Autocomplete
-antigen bundle zsh-users/zsh-autosuggestions
-
-# Extra zsh completions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
 
 # Load the theme.
 antigen theme bhilburn/powerlevel9k powerlevel9k
