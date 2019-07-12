@@ -114,10 +114,10 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle Vifon/deer
 autoload -U deer
 zle -N deer
-bindkey '\ek' deer
+bindkey '\ek' deer # Strg + K
 
 # History
-antigen bundle zdharma/history-search-multi-word
+antigen bundle zdharma/history-search-multi-word # Strg + R
 #antigen bundle zsh-users/zsh-history-substring-search
 
 # Syntax highlighting bundle.
