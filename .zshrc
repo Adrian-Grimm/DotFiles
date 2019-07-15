@@ -73,7 +73,7 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # ANTIGEN - Plugins to Enhance Functionality
 #Package Manager
 if [[ ! -f ~/antigen.zsh ]]; then
-	curl -L git.io/antigen > antigen.zsh
+	curl -L git.io/antigen > ~/antigen.zsh
 fi
 
 source ~/antigen.zsh
@@ -124,7 +124,6 @@ antigen bundle zdharma/history-search-multi-word # Strg + R
 #antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zdharma/fast-syntax-highlighting
 #antigen bundle trapd00r/LS_COLORS
-antigen bundle colored-man-pages
 
 # Load the theme.
 antigen theme bhilburn/powerlevel9k powerlevel9k
