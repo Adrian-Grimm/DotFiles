@@ -1,10 +1,8 @@
 ﻿[user]
 	name = Adrian Grimm
 [credential]
-	username = Adrian-Grimm@github.com
-	helper = store
-[core]
-	editor = vim
+  username = Adrian-Grimm
+	editor = nvim
 [mergetool "smerge"]
 	cmd = smerge.exe mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
 	trustExitCode = true
