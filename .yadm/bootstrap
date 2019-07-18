@@ -31,7 +31,7 @@ if [ "$system_type" = "Darwin" ]; then
     sudo ln -sv /usr/local/bin/pacapt /usr/local/bin/pacman || true
 
     pacapt update
-    pacapt install zsh git tmux neovim
+    pacapt install zsh tmux neovim
     pacapt install nano httpie
 fi
 
@@ -50,6 +50,6 @@ if [ ! -d ~/.nano ]; then
   git clone https://github.com/scopatz/nanorc.git ~/.nano
 fi
 
-
+yadm alt
 
 echo "Finished"
