@@ -1,4 +1,4 @@
-#=============================================================================
+﻿#=============================================================================
 # basic.toml --- basic configuration example for SpaceVim
 # Copyright (c) 2016-2017 Wang Shidong & Contributors
 # Author: Wang Shidong < wsdjeg at 163.com >
@@ -29,7 +29,6 @@
     vimcompatible = true
     guifont = "SauceCodePro Nerd Font Mono:h11"
     filemanager = "vimfiler"
-    fileformat = "unix,dos"
    #enable_vimfiler_gitstatus = true
 
 # Enable autocomplete layer

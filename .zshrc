@@ -1,18 +1,18 @@
 #Set default language to english
-export LANG=en_S.T-8
+export LANG=en_US.UTF-8
 
 #Minimal Prompt
 #precmd() { print "" }
 #PS1="⟩"
-#RPS1="%{$fg[magenta]%}%20...%~%%{$reset_color%}"
+#RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
 
-#or TMX without OhMyZsh TMX-Plugin
-#nabling Color Prompts
-#export TRM="screen-256color"
-export TRM="xterm-256color"
+#For TMUX without OhMyZsh TMUX-Plugin
+#Enabling Color Prompts
+#export TERM="screen-256color"
+export TERM="xterm-256color"
 
 #Autostart Tmux or attach if already running
-#if [ "$TMX" = "" ]
+#if [ "$TMUX" = "" ]
 #then
 #	tmux list-sessions
 #	if [ $? = 0 ]
@@ -30,50 +30,50 @@ setopt auto_cd
 setopt correctall
 alias git status='nocorrect git status'
 
-#THM-SCTION
+#THEME-SECTION
 #PowerLevel Theme Settings
-POWRLVL9K_INSTALLATION_PATH=$ANTIGN_BNDLS/bhilburn/powerlevel9k
-POWRLVL9K_MOD='nerdfont-complete'
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+POWERLEVEL9K_MODE='nerdfont-complete'
 #PL-Promt
-POWRLVL9K_LT_PROMPT_LMNTS=(os_icon vi_mode context dir_writable dir rbenv vcs)
-POWRLVL9K_RIGHT_PROMPT_LMNTS=(status ssh root_indicator background_jobs command_execution_time virtualenv rbenv rvm time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon vi_mode context dir_writable dir rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh root_indicator background_jobs command_execution_time virtualenv rbenv rvm time)
 #ram
 # Double-Lined Prompt
-POWRLVL9K_PROMPT_ON_NWLIN=true
-POWRLVL9K_RPROMPT_ON_NWLIN=false
-POWRLVL9K_MLTILIN_IRST_PROMPT_PRIX="%{014}╭%{cyan}"
-POWRLVL9K_MLTILIN_LAST_PROMPT_PRIX="%{014}\u2570%{cyan}\u460%{073}\u460%{109}\u460%f "
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{014}╭%F{cyan}"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{014}\u2570%F{cyan}\uF460%F{073}\uF460%F{109}\uF460%f "
 # VI Mode
-POWRLVL9K_VI_INSRT_MOD_STRING='INS'
-POWRLVL9K_VI_COMMAND_MOD_STRING='CMD'
-POWRLVL9K_VI_MOD_INSRT_ORGROND='black'
-POWRLVL9K_VI_MOD_INSRT_BACKGROND='green'
-POWRLVL9K_VI_MOD_NORMAL_ORGROND='black'
-POWRLVL9K_VI_MOD_NORMAL_BACKGROND='blue'
+POWERLEVEL9K_VI_INSERT_MODE_STRING='INS'
+POWERLEVEL9K_VI_COMMAND_MODE_STRING='CMD'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='green'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='blue'
 # Status
-POWRLVL9K_STATS_VRBOS=true
-POWRLVL9K_STATS_CROSS=true
+POWERLEVEL9K_STATUS_VERBOSE=true
+POWERLEVEL9K_STATUS_CROSS=true
 # Time
-POWRLVL9K_TIM_ORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
-POWRLVL9K_TIM_BACKGROND='blue'
+POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
+POWERLEVEL9K_TIME_BACKGROUND='blue'
 # Context
-POWRLVL9K_ALWAYS_SHOW_CONTXT=true
-POWRLVL9K_CONTXT_DALT_ORGROND='green'
-POWRLVL9K_CONTXT_TMPLAT="%{cyan}%n%f"
-POWRLVL9K_CONTXT_DALT_BACKGROND='black'
+POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='green'
+POWERLEVEL9K_CONTEXT_TEMPLATE="%F{cyan}%n%f"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='black'
 # OS segment
-POWRLVL9K_OS_ICON_BACKGROND="blue"
-POWRLVL9K_OS_ICON_ORGROND="black"
+POWERLEVEL9K_OS_ICON_BACKGROUND="blue"
+POWERLEVEL9K_OS_ICON_FOREGROUND="black"
 # Dirs
-POWRLVL9K_DIR_HOM_ORGROND="black"
-POWRLVL9K_DIR_HOM_SBOLDR_ORGROND="black"
-POWRLVL9K_DIR_DALT_ORGROND="black"
-POWRLVL9K_SHORTN_DIR_LNGTH=2
+POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
-# ANTIGN - Plugins to nhance unctionality
+# ANTIGEN - Plugins to Enhance Functionality
 #Package Manager
 if [[ ! -f ~/antigen.zsh ]]; then
-	curl -L git.io/antigen  ~/antigen.zsh
+	curl -L git.io/antigen > ~/antigen.zsh
 fi
 
 source ~/antigen.zsh
@@ -96,28 +96,28 @@ antigen bundle web-search
 antigen bundle rand-quote
 antigen bundle zsh_reload
 
-# TMX
+# TMUX
 antigen bundle tmux
-ZSH_TMX_ATOSTART=false
-#ZSH_TMX_ITRM2=true
-ZSH_TMX_ATOSTART_ONC=true
-ZSH_TMX_ATOCONNCT=true
+ZSH_TMUX_AUTOSTART=false
+#ZSH_TMUX_ITERM2=true
+ZSH_TMUX_AUTOSTART_ONCE=true
+ZSH_TMUX_AUTOCONNECT=true
 #antigen bundle tmuxinator
 
 # Autocomplete
 antigen bundle zsh-users/zsh-autosuggestions
 
-# xtra zsh completions
+# Extra zsh completions
 antigen bundle zsh-users/zsh-completions
 
-# CD completion
+# CD completion 
 antigen bundle Vifon/deer
-autoload - deer
+autoload -U deer
 zle -N deer
-bindkey '\ek' deer # Strg  K
+bindkey '\ek' deer # Strg + K
 
 # History
-antigen bundle zdharma/history-search-multi-word # Strg  R
+antigen bundle zdharma/history-search-multi-word # Strg + R
 #antigen bundle zsh-users/zsh-history-substring-search
 
 # Syntax highlighting bundle.
@@ -126,9 +126,9 @@ antigen bundle zdharma/fast-syntax-highlighting
 #antigen bundle trapd00r/LS_COLORS
 
 # Load the theme.
-antigen theme bhilburn/powerlevel9k powerlevel9k
+#antigen theme bhilburn/powerlevel9k powerlevel9k
 #speed-up Version:
-#antigen theme romkatv/powerlevel10k
+antigen theme romkatv/powerlevel10k
 
 # Tell Antigen that you're done.
 antigen apply
