@@ -110,7 +110,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 # Extra zsh completions
 antigen bundle zsh-users/zsh-completions
 
-# CD completion 
+# CD completion
 antigen bundle Vifon/deer
 autoload -U deer
 zle -N deer
@@ -126,9 +126,9 @@ antigen bundle zdharma/fast-syntax-highlighting
 #antigen bundle trapd00r/LS_COLORS
 
 # Load the theme.
-#antigen theme bhilburn/powerlevel9k powerlevel9k
+antigen theme bhilburn/powerlevel9k powerlevel9k
 #speed-up Version:
-antigen theme romkatv/powerlevel10k
+#antigen theme romkatv/powerlevel10k
 
 # Tell Antigen that you're done.
 antigen apply
