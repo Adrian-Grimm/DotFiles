@@ -11,6 +11,10 @@ export LANG=en_US.UTF-8
 #export TERM="screen-256color"
 export TERM="xterm-256color"
 
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.history
+
 #Autostart Tmux or attach if already running
 #if [ "$TMUX" = "" ]
 #then
