@@ -1,4 +1,4 @@
-﻿#Set default language to english
+#Set default language to english
 export LANG=en_US.UTF-8
 
 #Minimal Prompt
