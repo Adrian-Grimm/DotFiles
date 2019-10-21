@@ -136,6 +136,3 @@ antigen theme romkatv/powerlevel10k
 
 # Tell Antigen that you're done.
 antigen apply
-
-# Workaround for https://github.com/zdharma/fast-syntax-highlighting/issues/146
-FAST_HIGHLIGHT[chroma-git]="chroma/-ogit.ch"
