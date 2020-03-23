@@ -1,0 +1,186 @@
+# Don't print a new line at the start of the prompt
+add_newline = true
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 30
+
+# Overwrite a default_prompt_order and  use custom prompt_order
+prompt_order = [
+    "username",
+    "hostname",
+    "kubernetes",
+    "directory",
+    "git_branch",
+    "git_commit",
+    "git_state",
+    "git_status",
+    "hg_branch",
+    "package",
+    "dotnet",
+    "elixir",
+    "elm",
+    "golang",
+    "haskell",
+    "java",
+    "nodejs",
+    "php",
+    "python",
+    "ruby",
+    "rust",
+    "terraform",
+    "nix_shell",
+    "conda",
+    "memory_usage",
+    "aws",
+    "env_var",
+    "crystal",
+    "cmd_duration",
+    "line_break",
+    "jobs",
+    "battery",
+    "time",
+    "character",
+]
+
+[aws]
+symbol = " "
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[conda]
+symbol = " "
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]
+# The name of the module we are configuring is "character"
+disabled = false
+symbol = "❯" # The "symbol" segment is being set to "➜"
+vicmd_symbol = " ❮"
+use_symbol_for_status = false
+error_symbol = "✖"
+style_success = "bold green"
+style_failure = "bold red"
+
+[cmd_duration]
+disabled = false #min_time = 2_000
+show_milliseconds = false
+prefix = "took "
+style = "yellow"
+
+[directory]
+disabled = false
+truncation_length = 4
+prefix = "in "
+style = "bold cyan"
+
+[dotnet]
+symbol = "•NET "
+style = "green"
+heuristic = true
+
+[env_var]
+#variable = "SHELL"
+#default = "unknown shell"
+
+[hostname]
+ssh_only = true
+prefix = "⟪ "
+suffix = "⟫"
+trim_at = "."
+disabled = false
+
+[jobs]
+symbol = " "
+threshold = 1
+
+[git_branch]
+symbol = "" # " "
+#truncation_length = 2^63 - 1
+truncation_symbol = "…"
+style = "purple"
+
+[git_commit]
+commit_hash_length = 7
+prefix = "("
+suffix = ")"
+
+[git_state]
+progress_divider = "/"
+cherry_pick = " PICKING"
+style = "bold yellow"
+
+[git_status]
+disabled = false
+conflicted = ""
+deleted = ""
+ahead = "⇡"
+behind = "⇣"
+staged.value = " "
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+stashed = " "
+stashed_count.enabled = true
+show_sync_count = true
+modified = " "
+suffix = "] "
+prefix = "["
+style = "red"
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[line_break]
+disabled = false
+
+[memory_usage]
+show_percentage = false
+show_swap = true
+threshold = 75
+symbol = " "
+#"䷀ "
+separator = "|"
+style = "bold dimmed white"
+
+[nodejs]
+symbol = "⬢ "
+
+[package]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+pyenv_version_name = false
+pyenv_prefix = "pyenv "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "⚙ "
+
+[time]
+disabled = false
+use_12hr = false
+format = " %T" # "   %D "
+utc_time_offset = "local"
+style = ""
+
+[username]
+disabled = false
+show_always = false
+style_user = "green"
+style_root = "bold red"
+
