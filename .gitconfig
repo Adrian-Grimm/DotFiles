@@ -1,10 +1,11 @@
 [user]
-	name = Adrian-Grimm
+  name = Adrian-Grimm
+  email = mail@adrian-grimm.net
 [credential]
   username = Adrian-Grimm
 	editor = nvim
 [mergetool "smerge"]
-	cmd = smerge.exe mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	cmd = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
 	trustExitCode = true
 [merge]
 	tool = smerge
