@@ -59,13 +59,14 @@ symbol = " "
 disabled = false
 symbol = "❯" # The "symbol" segment is being set to "➜"
 vicmd_symbol = " ❮"
-use_symbol_for_status = false
+use_symbol_for_status = true
 error_symbol = "✖"
 style_success = "bold green"
 style_failure = "bold red"
 
 [cmd_duration]
-disabled = false #min_time = 2_000
+disabled = false
+min_time = 2000
 show_milliseconds = false
 prefix = "took "
 style = "yellow"
@@ -73,17 +74,23 @@ style = "yellow"
 [directory]
 disabled = false
 truncation_length = 4
+truncate_to_repo = true
 prefix = "in "
 style = "bold cyan"
 
 [dotnet]
-symbol = "•NET "
+symbol = "•NET"
 style = "green"
 heuristic = true
 
 [env_var]
-#variable = "SHELL"
-#default = "unknown shell"
+disabled = true
+variable = "SHELL"
+symbol = ""
+default = "unknown shell"
+style = "dimmed black"
+suffix = ""
+prefix = ""
 
 [hostname]
 ssh_only = true
@@ -143,6 +150,7 @@ symbol = " "
 disabled = false
 
 [memory_usage]
+disabled = false
 show_percentage = false
 show_swap = true
 threshold = 75
