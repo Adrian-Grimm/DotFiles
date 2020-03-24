@@ -1,0 +1,3 @@
+# Confif for the lf filemanager - https://github.com/gokcehan/lf
+set hidden
+set relativenumber
