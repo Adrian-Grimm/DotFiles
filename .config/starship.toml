@@ -182,7 +182,7 @@ symbol = "⚙ "
 [time]
 disabled = false
 use_12hr = false
-format = " %T" # "   %D "
+format = " %T" # "   %D"
 utc_time_offset = "local"
 style = ""
 
