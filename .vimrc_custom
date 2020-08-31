@@ -1,6 +1,9 @@
 colorscheme slate
 set guifont=OperatorMonoLig\ NF:h16
 set number relativenumber
+set nobomb
+set fileformat=unix
+set fileformats=unix,dos,mac
 
 augroup numbertoggle
   autocmd!
@@ -44,3 +47,5 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
+autocmd BufRead,BufWrite * :set fileformat=unix
+autocmd BufRead,BufWrite * :set nobomb

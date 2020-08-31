@@ -9,3 +9,6 @@
 	trustExitCode = true
 [merge]
 	tool = smerge
+[core]
+	autocrlf = false
+	eol = lf
