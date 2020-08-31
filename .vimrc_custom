@@ -1,3 +1,5 @@
+" Rename this config if you want to use it.
+
 colorscheme slate
 set guifont=OperatorMonoLig\ NF:h16
 set number relativenumber
