@@ -98,12 +98,12 @@ antigen bundle zdharma/fast-syntax-highlighting
 #antigen bundle trapd00r/LS_COLORS
 antigen bundle denysdovhan/spaceship-prompt
 
+# Tell Antigen that you're done.
+antigen apply
+
 # Load the Starship Theme:
 export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
-
-# Tell Antigen that you're done.
-antigen apply
 
 export LF_ICONS="\
 tw=:\
