@@ -65,8 +65,13 @@ antigen bundle colored-man-pages
 antigen bundle web-search
 antigen bundle rand-quote
 antigen bundle zsh_reload
-antigen bundle z
 antigen bundle sudo
+
+if type "zoxide" > /dev/null; then
+  eval "$(zoxide init zsh)"
+else
+  antigen bundle z
+fi
 
 # TMUX
 antigen bundle tmux
