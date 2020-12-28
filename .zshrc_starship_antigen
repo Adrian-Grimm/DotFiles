@@ -33,97 +33,83 @@ HISTFILE=~/.history
 #Auto CD
 setopt auto_cd
 
-setopt promptsubst
-
 #Spellcheck / Typo Correction
 setopt correctall
 alias git status='nocorrect git status'
 
-PS1="READY > "
-
-# ZINIT - Plugins to Enhance Functionality
+# ANTIGEN - Plugins to Enhance Functionality
 #Package Manager
-if [[ ! -a ~/.zinit/bin/zinit.zsh ]]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+if [[ ! -f ~/antigen.zsh ]]; then
+	curl -L git.io/antigen > ~/antigen.zsh
 fi
 
-#Replace ls with exa
-if type "exa" > /dev/null; then
-  alias ls="exa"
+if ! type "starship" > /dev/null; then
+  curl -fsSL https://starship.rs/install.sh | bash
 fi
 
-source ~/.zinit/bin/zinit.zsh
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+source ~/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
 # VI-Mode
 bindkey -v
+antigen bundle vi-mode
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+#antigen bundle git
+#antigen bundle git-flow
+antigen bundle copydir antigen bundle colorize
+antigen bundle command-not-found
+antigen bundle colored-man-pages
+antigen bundle web-search
+antigen bundle rand-quote
+antigen bundle zsh_reload
+antigen bundle sudo
 
 if type "zoxide" > /dev/null; then
   eval "$(zoxide init zsh)"
 else
-  zinit snippet OMZP::z
+  antigen bundle z
 fi
 
 # TMUX
-zinit snippet OMZP::tmux
+antigen bundle tmux
 ZSH_TMUX_AUTOSTART=false
 #ZSH_TMUX_ITERM2=true
 ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOCONNECT=true
-#zinit snippet OMZP::tmuxinator
+#antigen bundle tmuxinator
 
-#Coloring
-zinit ice wait"2" silent as"command" from"gh-r"
-zinit light alecthomas/chroma
-ZSH_COLORIZE_TOOL=chroma
-#ZSH_COLORIZE_STYLE="colorful"
-#ZSH_COLORIZE_CHROMA_FORMATTER=terminal256
+# Autocomplete
+antigen bundle zsh-users/zsh-autosuggestions
 
-zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
-      zdharma/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions \
-  OMZP::git \
-  OMZP::copydir \
-  OMZP::copyfile \
-  OMZP::colorize \
-  OMZP::command-not-found \
-  OMZP::colored-man-pages \
-  OMZP::web-search \
-  OMZP::zsh_reload \
-  OMZP::sudo \
-  OMZP::fzf
-
-#Additional  needed Sources:
-#https://github.com/Homebrew/homebrew-command-not-found
+# Extra zsh completions
+antigen bundle zsh-users/zsh-completions
 
 # CD completion
-zinit ice pick"deer" nocompile
-zinit load Vifon/deer
+antigen bundle Vifon/deer
 autoload -U deer
 zle -N deer
-bindkey '^k' deer # Strg + K
+bindkey '\ek' deer # Strg + K
 
 # History
-zinit light zdharma/history-search-multi-word # Strg + R
-#zinit light zsh-users/zsh-history-substring-search
+antigen bundle zdharma/history-search-multi-word # Strg + R
+#antigen bundle zsh-users/zsh-history-substring-search
 
-zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
-zinit light trapd00r/LS_COLORS
+# Syntax highlighting bundle.
+#antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zdharma/fast-syntax-highlighting
+#antigen bundle trapd00r/LS_COLORS
+antigen bundle denysdovhan/spaceship-prompt
 
-# Init Starship Prompt
+# Tell Antigen that you're done.
+antigen apply
+
 # Load the Starship Theme:
-zinit ice wait silent as"program" id-as'starship' nocompile run-atpull \
-  atclone"curl -fsSL https://starship.rs/install.sh | bash" \
-  atpull"curl -fsSL https://starship.rs/install.sh | bash" \
-  atinit"export STARSHIP_CONFIG=~/.config/starship.toml; eval '$(starship init zsh)'"
-zinit light zdharma/null
+export STARSHIP_CONFIG=~/.config/starship.toml
+eval "$(starship init zsh)"
 
-#LF Icon Mod
 export LF_ICONS="\
 tw=:\
 st=:\
