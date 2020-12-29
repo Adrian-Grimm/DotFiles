@@ -65,14 +65,6 @@ else
   zinit load agkozak/zsh-z
 fi
 
-# TMUX
-zinit snippet OMZP::tmux
-ZSH_TMUX_AUTOSTART=false
-#ZSH_TMUX_ITERM2=true
-ZSH_TMUX_AUTOSTART_ONCE=true
-ZSH_TMUX_AUTOCONNECT=true
-#zinit snippet OMZP::tmuxinator
-
 #Coloring
 zinit ice wait"2" silent as"command" from"gh-r"
 zinit light alecthomas/chroma
