@@ -62,7 +62,7 @@ bindkey -v
 if type "zoxide" > /dev/null; then
   eval "$(zoxide init zsh)"
 else
-  zinit snippet OMZP::z
+  zinit load agkozak/zsh-z
 fi
 
 # TMUX
