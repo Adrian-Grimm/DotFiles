@@ -108,7 +108,7 @@ zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" n
 zinit light trapd00r/LS_COLORS
 
 zinit ice wait silent as"program" nocompile run-atpull \
-  atinit'ln -s -f "$(pwd)/.tmux.conf" ~/.tmux.conf; cp .tmux.conf.local ~/.tmux.conf.local'
+  atinit'ln -s -f "$(pwd)/.tmux.conf" ~/.tmux.conf; cp -n .tmux.conf.local ~/.tmux.conf.local'
 zinit light gpakosz/.tmux
 
 # Init Starship Prompt
