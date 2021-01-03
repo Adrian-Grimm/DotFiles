@@ -77,7 +77,7 @@ tmux_conf_theme_message_attr='bold'
 
 # status line command style (<prefix> : Escape)
 tmux_conf_theme_message_command_fg='#ffff00'            # yellow
-tmux_conf_theme_message_command_bg='#000000'            # black
+tmux_conf_theme_message_command_bg='#3a3a3a'            # black
 tmux_conf_theme_message_command_attr='bold'
 
 # window modes style
@@ -87,7 +87,7 @@ tmux_conf_theme_mode_attr='bold'
 
 # status line style
 tmux_conf_theme_status_fg='#8a8a8a'                     # light gray
-tmux_conf_theme_status_bg='#080808'                     # dark gray
+tmux_conf_theme_status_bg='#1a1a1a'                     # dark gray
 tmux_conf_theme_status_attr='none'
 
 # terminal title
@@ -109,7 +109,7 @@ tmux_conf_theme_terminal_title='#h ❐ #S ● #I #W'
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_window_status_fg='#8a8a8a'              # light gray
-tmux_conf_theme_window_status_bg='#080808'              # dark gray
+tmux_conf_theme_window_status_bg='#383838'              # dark gray
 tmux_conf_theme_window_status_attr='none'
 tmux_conf_theme_window_status_format='#I #W'
 #tmux_conf_theme_window_status_format='#{circled_window_index} #W'
@@ -137,12 +137,12 @@ tmux_conf_theme_window_status_activity_attr='underscore'
 
 # window bell status style
 tmux_conf_theme_window_status_bell_fg='#ffff00'         # yellow
-tmux_conf_theme_window_status_bell_bg='default'
+tmux_conf_theme_window_status_bell_bg='#3c3c3c'
 tmux_conf_theme_window_status_bell_attr='blink,bold'
 
 # window last status style
 tmux_conf_theme_window_status_last_fg='#00afff'         # light blue
-tmux_conf_theme_window_status_last_bg='default'
+tmux_conf_theme_window_status_last_bg='#3c3c3c'
 tmux_conf_theme_window_status_last_attr='none'
 
 # status left/right sections separators
@@ -189,7 +189,7 @@ tmux_conf_theme_status_left_attr='bold,none,none'
 
 # status right style
 tmux_conf_theme_status_right_fg='#8a8a8a,#000000,#000000' # light gray, black, black
-tmux_conf_theme_status_right_bg='#080808,#8eb400,#e4e4e4' # dark gray, green, white
+tmux_conf_theme_status_right_bg='#383838,#8eb400,#e4e4e4' # dark gray, green, white
 tmux_conf_theme_status_right_attr='none,none,bold'
 
 # pairing indicator
