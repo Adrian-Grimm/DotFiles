@@ -74,7 +74,7 @@ ZSH_COLORIZE_TOOL=chroma
 
 zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
-      zdharma/fast-syntax-highlighting \
+      zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
@@ -86,7 +86,6 @@ zinit wait lucid light-mode for \
   OMZP::command-not-found \
   OMZP::colored-man-pages \
   OMZP::web-search \
-  OMZP::zsh_reload \
   OMZP::sudo \
   OMZP::fzf
 
@@ -101,7 +100,7 @@ zle -N deer
 bindkey '^k' deer # Strg + K
 
 # History
-zinit light zdharma/history-search-multi-word # Strg + R
+zinit light zdharma-continuum/history-search-multi-word # Strg + R
 #zinit light zsh-users/zsh-history-substring-search
 
 zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
@@ -117,7 +116,7 @@ zinit ice wait silent as"program" id-as'starship' nocompile run-atpull \
   atclone"curl -fsSL https://starship.rs/install.sh | bash" \
   atpull"curl -fsSL https://starship.rs/install.sh | bash" \
   atinit"export STARSHIP_CONFIG=~/.config/starship.toml; eval '$(starship init zsh)'"
-zinit light zdharma/null
+zinit light zdharma-continuum/null
 
 #LF Icon Mod
 export LF_ICONS="\
