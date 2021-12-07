@@ -44,7 +44,7 @@ PS1="READY > "
 # ZINIT - Plugins to Enhance Functionality
 #Package Manager
 if [[ ! -a ~/.zinit/bin/zinit.zsh ]]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/master/doc/install.sh)"
 fi
 
 #Replace ls with exa
