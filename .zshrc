@@ -80,7 +80,7 @@ zinit wait lucid light-mode for \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
   OMZP::git \
-  OMZP::copydir \
+  OMZP::copypath \
   OMZP::copyfile \
   OMZP::colorize \
   OMZP::command-not-found \
@@ -113,8 +113,8 @@ zinit light gpakosz/.tmux
 # Init Starship Prompt
 # Load the Starship Theme:
 zinit ice wait silent as"program" id-as'starship' nocompile run-atpull \
-  atclone"curl -fsSL https://starship.rs/install.sh | bash" \
-  atpull"curl -fsSL https://starship.rs/install.sh | bash" \
+  atclone"curl -fsSL https://starship.rs/install.sh | sh" \
+  atpull"curl -fsSL https://starship.rs/install.sh | sh" \
   atinit"export STARSHIP_CONFIG=~/.config/starship.toml; eval '$(starship init zsh)'"
 zinit light zdharma-continuum/null
 
