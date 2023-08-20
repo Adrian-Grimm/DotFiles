@@ -99,6 +99,11 @@ autoload -U deer
 zle -N deer
 bindkey '^k' deer # Strg + K
 
+# Shell Browser
+# UI Library ZUI required for zbrowse
+zinit load zdharma-continuum/zui
+zinit load zdharma-continuum/zbrowse
+
 # History
 zinit light zdharma-continuum/history-search-multi-word # Strg + R
 #zinit light zsh-users/zsh-history-substring-search
@@ -281,3 +286,5 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
+
+[[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
