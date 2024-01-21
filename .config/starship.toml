@@ -1,3 +1,5 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # Don't print a new line at the start of the prompt
 add_newline = true
 
@@ -6,15 +8,21 @@ scan_timeout = 10
 
 # Overwrite a default_prompt_order and  use custom prompt_order
 format = """
+[](color_orange)\
+$os\
 $username\
+[](bg:color_yellow fg:color_orange)\
+$directory\
+[](fg:color_yellow bg:color_aqua)\
+$git_branch\
+$git_status\
+$git_commit\
+$git_state\
+[](fg:color_aqua bg:color_blue)\
+$c\
 $hostname\
 $shlvl\
 $kubernetes\
-$directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
 $hg_branch\
 $docker_context\
 $package\
@@ -25,6 +33,8 @@ $elixir\
 $elm\
 $erlang\
 $golang\
+$kotlin\
+$haskell\
 $helm\
 $java\
 $julia\
@@ -42,19 +52,36 @@ $terraform\
 $zig\
 $nix_shell\
 $conda\
-$memory_usage\
 $aws\
 $gcloud\
-$env_var\
 $crystal\
-$cmd_duration\
+[](fg:color_blue bg:color_bg3)\
+$docker_context\
+$env_var\
 $custom\
-$line_break\
+[](fg:color_bg3 bg:color_bg1)\
+$memory_usage\
 $jobs\
-$battery\
-$time\
 $status\
-$character"""
+$cmd_duration\
+$time\
+$battery\
+[ ](fg:color_bg1)\
+$line_break$character"""
+
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+color_bg1 = '#3c3836'
+color_bg3 = '#665c54'
+color_blue = '#458588'
+color_aqua = '#689d6a'
+color_green = '#98971a'
+color_orange = '#d65d0e'
+color_purple = '#b16286'
+color_red = '#cc241d'
+color_yellow = '#d79921'
 
 [aws]
 format = "on [$symbol$profile(\\($region\\))]($style) "
@@ -68,13 +95,23 @@ us-east-1 = "va"
 full_symbol = ""
 charging_symbol = ""
 discharging_symbol = ""
+style = "bold dimmed bg:color_bg1 fg:color_green"
+format = "[$symbol]($style)"
+
+[c]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [character]
 # The name of the module we are configuring is "character"
 disabled = false
-success_symbol = "[❯](bold green)"
-vicmd_symbol = "[ ❮](bold green)"
-error_symbol = "[✖](bold red)"
+success_symbol = '[❯](bold fg:color_green)'
+error_symbol = '[✖](bold fg:color_red)'
+vimcmd_symbol = '[ ❮](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:color_purple)'
+vimcmd_replace_symbol = '[❮](bold fg:color_purple)'
+vimcmd_visual_symbol = '[❮](bold fg:color_yellow)'
 
 [conda]
 symbol = " "
@@ -85,37 +122,52 @@ format = "[$symbol$environment](dimmed green) "
 disabled = false
 min_time = 2000
 show_milliseconds = false
-format = "took [$duration]($style) "
-style = "yellow"
+format = "[took $duration]($style)"
+style = "bold dimmed bg:color_bg1"
 
 [directory]
 disabled = false
 truncation_length = 4
 truncate_to_repo = true
-format = "[$path]($style)[$read_only]($read_only_style) "
-style = "bold cyan"
+style = "fg:color_fg0 bg:color_yellow"
+format = "[ $path ]($style)"
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
 
 [dotnet]
 symbol = "•NET"
-style = "green"
 heuristic = true
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [docker_context]
-format = "via [ $context](blue bold)"
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [elixir]
 symbol = " "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [elm]
 symbol = " "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [env_var]
 disabled = true
 variable = "SHELL"
 symbol = ""
 default = "unknown shell"
-style = "dimmed black"
-format = "with [$env_value]($style) "
+style = "dimmed bg:color_bg3"
+format = "[with $env_value]($style) "
 
 [gcloud]
 symbol = "️🇬️ "
@@ -124,20 +176,20 @@ us-central1 = "uc1"
 asia-northeast1 = "an1"
 
 [git_branch]
-symbol = "" # " "
-#truncation_length = 2^63 - 1
-truncation_symbol = "…"
-style = "purple"
+symbol = " " # ""
+style = "bg:color_aqua"
+format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
 
 [git_commit]
 commit_hash_length = 7
+style = "bg:color_aqua"
 format = "[\\($hash\\)]($style) "
 
 [git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
 cherry_pick = " PICKING"
-style = "bold yellow"
 disabled = false
+style = "bg:color_aqua"
+format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
 
 [git_status]
 disabled = false
@@ -146,15 +198,17 @@ deleted = ""
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-staged = '[\($count\)](green)'
-stashed = '[\($count\)](yellow)'
-modified = '[\($count\)](red)'
+staged = '[\($count\)](bold color_green bg:color_aqua)'
+stashed = '[\($count\)](bold color_yellow bg:color_aqua)'
+modified = '[\($count\)](bold color_red bg:color_aqua)'
 renamed = "renamed"
-format = "([\\[$all_status$ahead_behind\\]]($style) )"
-style = "red"
+style = "bg:color_aqua"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:color_aqua)]($style)'
 
 [golang]
-symbol = " "
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [hg_branch]
 symbol = " "
@@ -165,25 +219,41 @@ format = "⟪ [$hostname]($style)⟫ in "
 trim_at = "."
 disabled = false
 
+[kotlin]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
 [kubernetes]
 symbol = "☸ "
 format = "on [$symbol$context \\($namespace\\)](dimmed green) "
 disabled = false
 [kubernetes.context_aliases]
 "dev.local.cluster.k8s" = "dev"
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [jobs]
 disabled = false
 symbol = "✦ "
-style = "bold blue"
 threshold = 1
 format = "[$symbol$number]($style) "
+style = "bold dimmed bg:color_bg1"
 
 [java]
 symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [julia]
 symbol = " "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [line_break]
 disabled = false
@@ -191,19 +261,50 @@ disabled = false
 [memory_usage]
 disabled = false
 threshold = 75
-symbol = " "
+symbol = "󰍛"
 #"䷀ "
-format = "via $symbol [${ram}( | ${swap})]($style) "
-style = "bold dimmed white"
+style = "bold dimmed bg:color_bg1"
+format = '[$symbol ${ram}( | ${swap})]($style)'
 
 [nim]
 symbol = " "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [nix_shell]
 symbol = " "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [nodejs]
-symbol = "⬢ "
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[os]
+disabled = false
+style = "bg:color_orange fg:color_fg0"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
 
 [package]
 symbol = " "
@@ -211,20 +312,30 @@ format = "via [$symbol $version](208 bold) "
 
 [perl]
 symbol = " "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [php]
-symbol = " "
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [python]
 symbol = " "
 pyenv_version_name = false
 pyenv_prefix = "pyenv "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [ruby]
 symbol = " "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [rust]
-symbol = " "
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [shlvl]
 disabled = false
@@ -232,29 +343,31 @@ format = "$shlvl level(s) down"
 threshold = 3
 
 [singularity]
-format = "[$symbol\\[$env\\]]($style) "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [status]
-style = "bold red"
-symbol = ""
-format = "[\\[$status$symbol\\]]($style) "
 disabled = false
+symbol = " "
+style = "bold bg:color_bg1"
+format = '[[$symbol( $status)](bold fg:color_red bg:color_bg1)]($style)'
 
 [swift]
 symbol = "ﯣ "
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [time]
 disabled = false
 use_12hr = false
 utc_time_offset = "local"
-style = ""
 time_format = "%T" # "   %D"
-format = " [$time]($style) "
+style = "bg:color_bg1"
+format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [username]
 disabled = false
 show_always = true
-style_user = "green"
-style_root = "bold red"
-format = "[$user]($style) "
-
+style_user = "bg:color_orange fg:color_fg0"
+style_root = "bg:color_orange fg:color_fg0"
+format = '[ $user ]($style)'

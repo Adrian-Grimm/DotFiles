@@ -43,18 +43,37 @@ PS1="READY > "
 
 # ZINIT - Plugins to Enhance Functionality
 #Package Manager
-if [[ ! -a ~/.zinit/bin/zinit.zsh ]]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/master/doc/install.sh)"
+if [[ ! -a $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+  bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 fi
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
 
 #Replace ls with exa
 if type "exa" > /dev/null; then
   alias ls="exa"
 fi
-
-source ~/.zinit/bin/zinit.zsh
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
 
 # VI-Mode
 bindkey -v
@@ -120,7 +139,7 @@ zinit light gpakosz/.tmux
 zinit ice wait silent as"program" id-as'starship' nocompile run-atpull \
   atclone"curl -fsSL https://starship.rs/install.sh | sh" \
   atpull"curl -fsSL https://starship.rs/install.sh | sh" \
-  atinit"export STARSHIP_CONFIG=~/.config/starship.toml; eval '$(starship init zsh)'"
+  atinit'export STARSHIP_CONFIG=~/.config/starship.toml; eval "$(starship init zsh)"'
 zinit light zdharma-continuum/null
 
 #LF Icon Mod
@@ -287,4 +306,3 @@ ex=:\
 *.nix=:\
 "
 
-[[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
