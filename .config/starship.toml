@@ -95,8 +95,7 @@ us-east-1 = "va"
 full_symbol = ""
 charging_symbol = ""
 discharging_symbol = ""
-style = "bold dimmed bg:color_bg1 fg:color_green"
-format = "[$symbol]($style)"
+format = "[$symbol](bold dimmed fg:color_green bg:color_bg1)"
 
 [c]
 symbol = " "
