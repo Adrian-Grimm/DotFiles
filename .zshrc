@@ -149,4 +149,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # CodeEditApp integration
 [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
 # Broot integration
-source /Users/adrian/.config/broot/launcher/bash/br
+source ~/.config/broot/launcher/bash/br
