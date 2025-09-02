@@ -1,3 +1,5 @@
+#Required dependencies: curl git fzf
+
 #Set default language to english
 export LANG=en_US.UTF-8
 
@@ -13,6 +15,7 @@ export LANG=en_US.UTF-8
 #Enabling Color Prompts
 #export TERM="screen-256color"
 export TERM="xterm-256color"
+export COLORTERM=truecolor
 
 HISTSIZE=1000
 SAVEHIST=1000
@@ -150,3 +153,5 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
 # Broot integration
 source ~/.config/broot/launcher/bash/br
+
+source /home/adrian/.config/broot/launcher/bash/br

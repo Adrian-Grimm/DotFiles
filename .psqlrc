@@ -1,0 +1,95 @@
+-- ~/.psqlrc — a practical, portable setup
+-- Works well across most psql versions (9.6+) and platforms.
+
+------------------------------------------------------------
+-- Core behavior: safer, more informative
+------------------------------------------------------------
+
+-- Stop executing after the first error (good for scripts, and usually OK for interactive).
+-- If you prefer different behavior interactively, you can override in ~/.psqlrc.local.
+\set ON_ERROR_STOP on
+
+-- More context and details in error messages.
+\set VERBOSITY verbose
+-- terse | default | verbose
+\set SHOW_CONTEXT errors
+-- never | errors | always
+
+-- Show execution time for each query.
+\timing on
+
+-- Stream large result sets instead of slurping them into memory at once.
+-- 1000 works well with pagers and keeps memory sane for big outputs.
+\set FETCH_COUNT 1000
+
+-- Don’t print "(x rows)" footer unless useful; can be toggled with \pset footer on
+\pset footer off
+
+------------------------------------------------------------
+-- Display: readable tables by default
+------------------------------------------------------------
+
+-- Use Unicode table borders (nice on modern terminals).
+\pset linestyle unicode
+\pset border 2
+
+-- Show explicit NULLs so they don't look like empty strings.
+\pset null '∅'
+
+-- Auto-switch to vertical layout for very wide outputs (super handy).
+\x auto
+
+-- Keep aligned output as default; switch to CSV with: \pset format csv
+\pset format aligned
+
+-- Keep pager on; we'll tune the pager below.
+\pset pager on
+
+------------------------------------------------------------
+-- Completion, echo, history
+------------------------------------------------------------
+
+-- Uppercase SQL keywords on tab-completion; personal preference.
+\set COMP_KEYWORD_CASE upper
+
+-- Don’t echo the SQL behind backslash commands (noise); turn on with: \set ECHO_HIDDEN on
+\set ECHO_HIDDEN off
+
+-- Longer history and sane history behavior
+\set HISTSIZE 50000
+\set HISTCONTROL ignoreboth
+-- ignoredups + ignorespace (readline-compatible)
+
+------------------------------------------------------------
+-- Pager: sensible defaults for "less"
+-- Linux/macOS terminals: keep colors, line chop (not wrap), quit if one screen,
+-- don't clear screen on exit, case-insensitive search.
+------------------------------------------------------------
+\setenv PAGER 'less'
+\setenv LESS  '-iMSx4 -FXR'
+
+-- If you generally prefer wrapping long lines instead of horizontal scrolling,
+-- use this instead:
+-- \setenv LESS '-iM+Sx4 -FXR'
+-- drop the "S" (chop long lines)
+
+-- On Windows (PowerShell/CMD), you may prefer:
+-- \pset pager off
+-- (or install a better pager and point PAGER to it)
+
+------------------------------------------------------------
+-- Prompt: user@host db [status]
+-- Colors are ANSI; %[%] tells psql they're zero-width so alignment stays correct.
+-- %n=user, %M=host[:port], %/=db, %R=txn/prompt status, %#==> or =# (superuser)
+------------------------------------------------------------
+\set PROMPT1 '%[%033[1;36m%]%n@%M%[%033[0m%] %[%033[1;34m%]%/%[%033[0m%] %R%# '
+\set PROMPT2 '%[%033[1;33m%]%R%[%033[0m%] > '
+
+------------------------------------------------------------
+-- Optional: include per-machine or per-user overrides if present
+-- We temporarily disable ON_ERROR_STOP so a missing file doesn’t fail startup.
+------------------------------------------------------------
+\set ON_ERROR_STOP off
+\i ~/.psqlrc.local
+\set ON_ERROR_STOP on
+
