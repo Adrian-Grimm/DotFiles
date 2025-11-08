@@ -154,4 +154,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Broot integration
 source ~/.config/broot/launcher/bash/br
 
-source /home/adrian/.config/broot/launcher/bash/br
+source /Users/adrian/.config/broot/launcher/bash/br

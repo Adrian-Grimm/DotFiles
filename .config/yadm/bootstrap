@@ -12,27 +12,26 @@ system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then
 
-    # install homebrew if it's missing
-    if ! command -v brew >/dev/null 2>&1; then
-      echo "Installing homebrew"
-      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
 
-    if [ -f "$HOME/Brewfile" ]; then
-      echo "Updating homebrew bundle"
-      brew bundle --global
-    fi
+  if [ -f "$HOME/Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew bundle --global
+  fi
 
-  else
-    # universal-install
-    sudo wget -O /usr/local/bin/pacapt \
-      https://github.com/icy/pacapt/raw/ng/pacapt
-    sudo chmod 755 /usr/local/bin/pacapt
-    sudo ln -sv /usr/local/bin/pacapt /usr/local/bin/pacman || true
+else
+  # universal-install
+  sudo wget -O /usr/local/bin/pacapt \
+    https://github.com/icy/pacapt/raw/ng/pacapt
+  sudo chmod 755 /usr/local/bin/pacapt
+  sudo ln -sv /usr/local/bin/pacapt /usr/local/bin/pacman || true
 
-    pacapt update
-    pacapt install zsh tmux neovim
-    pacapt install nano httpie
+  pacapt update
+  pacapt install zsh tmux neovim nano
 fi
 
 if [ ! -d ~/.tmux ]; then
@@ -42,8 +41,8 @@ if [ ! -d ~/.tmux ]; then
   ln -s -f .tmux/.tmux.conf
 fi
 
-if [ ! -d ~/.SpaceVim ]; then
-  curl -sLf https://spacevim.org/install.sh | bash
+if [ ! -d ~/.config/nvim ]; then
+  git clone https://github.com/LazyVim/starter ~/.config/nvim
 fi
 
 if [ ! -d ~/.nano ]; then
