@@ -1,0 +1,209 @@
+# Reference: https://github.com/i3/i3/blob/next/etc/config
+
+# Start AeroSpace at login
+start-at-login = true
+
+after-startup-command = [
+    # JankyBorders has a built-in detection of already running process,
+    # https://github.com/FelixKratz/JankyBorders
+    # so it won't be run twice on AeroSpace restart
+    # A color formatted as 0xAARRGGBB, where A is the alpha channel, R the red channel, G the green channel and B the blue channel. All constituents take a base 16 number, i.e. 0-F.
+    'exec-and-forget borders active_color=0x66ffffff order=above hidpi="on" inactive_color=0x00ffffff width=8 style="round"',
+]
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# The 'accordion-padding' specifies the size of accordion padding
+# You can set 0 to disable the padding feature
+accordion-padding = 30
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'tiles'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'auto'
+
+# Possible values: (qwerty|dvorak)
+# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
+key-mapping.preset = 'qwerty'
+
+# Mouse follows focus when focused monitor changes
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = true
+
+# Gaps between windows (inner-*) and between monitor edges (outer-*).
+# Possible values:
+# - Constant:     gaps.outer.top = 8
+# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                 In this example, 24 is a default value when there is no match.
+#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
+#                 See:
+#                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+[gaps]
+inner.horizontal = 12
+inner.vertical =   12
+outer.left =       12
+outer.bottom =     12
+outer.top =        12
+outer.right =      12
+
+
+[mode.main.binding]
+
+    # Disable "hide application" shortcuts
+    cmd-h = [] # Disable "hide application"
+    cmd-alt-h = [] # Disable "hide others"œ
+    
+    alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
+
+    alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+    alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+    alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+    alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+    
+    shift-alt-h = 'move left'
+    shift-alt-j = 'move down'
+    shift-alt-k = 'move up'
+    shift-alt-l = 'move right' 
+
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    cmd-alt-j = 'layout horizontal vertical'
+    cmd-alt-f = 'fullscreen'
+
+    alt-1 = 'workspace 1'
+    alt-2 = 'workspace 2'
+    alt-3 = 'workspace 3'
+    alt-4 = 'workspace 4'
+    alt-5 = 'workspace 5'
+    alt-6 = 'workspace 6'
+    alt-7 = 'workspace 7'
+    alt-8 = 'workspace 8'
+    alt-9 = 'workspace 9'
+
+    alt-pageUp = ['workspace prev']
+    alt-pageDown = ['workspace next']
+
+    alt-home = ['workspace 1']
+    alt-end = ['workspace 9']
+
+    alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
+    alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+    alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+    alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+    alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+    alt-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
+    alt-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
+    alt-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
+    alt-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
+
+    alt-tab = 'workspace-back-and-forth'
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+    # Reset view to default split
+    alt-shift-d = 'flatten-workspace-tree'
+
+    # Floating window
+    alt-shift-f = 'layout floating tiling'
+
+    # Modes
+    alt-shift-m = 'mode merge'
+    alt-shift-w = 'mode workspace'
+    alt-shift-r = 'mode resize'
+    alt-shift-semicolon = 'mode service'
+
+
+[mode.merge.binding]
+    space = 'mode main'
+    esc = 'mode main'
+
+    left = ['join-with left', 'mode main']
+    down = ['join-with down', 'mode main']
+    up = ['join-with up', 'mode main']
+    right = ['join-with right', 'mode main']
+
+
+[mode.resize.binding]
+    space = 'mode main'
+    esc = 'mode main'
+
+    left = ['resize width -16']
+    down = ['resize height -16']
+    up = ['resize height +16']
+    right = ['resize width +16']
+
+    shift-left = ['resize width -64']
+    shift-down = ['resize height -64']
+    shift-up = ['resize height +64']
+    shift-right = ['resize width +64']
+
+
+[mode.workspace.binding]
+    space = 'mode main'
+    esc = 'mode main'
+
+    left = ['workspace prev', 'move-mouse window-force-center']
+    right = ['workspace next', 'move-mouse window-force-center']
+    up = ['focus-monitor prev', 'move-mouse window-force-center']
+    down = ['focus-monitor next', 'move-mouse window-force-center']
+    
+    shift-right = ['move-node-to-workspace next --focus-follows-window']
+    shift-left = ['move-node-to-workspace prev --focus-follows-window']
+    shift-up = ['move-node-to-monitor prev --focus-follows-window']
+    shift-down = ['move-node-to-monitor next --focus-follows-window']
+
+
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+    # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+    #s = ['layout sticky tiling', 'mode main']
+
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
+#
+# Application-specific configurations
+#
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Obsidian|Notes'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.keepassium.ios.pro'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.AppStore'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.clock'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.FaceTime'
+run = 'layout floating'
