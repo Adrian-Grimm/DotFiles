@@ -338,7 +338,9 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [shlvl]
 disabled = false
-format = "$shlvl level(s) down"
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol ( $shlvl )](fg:color_fg0 bg:color_blue)]($style)'
 threshold = 3
 
 [singularity]
