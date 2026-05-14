@@ -142,23 +142,23 @@ truncation_symbol = "…/"
 [dotnet]
 symbol = "•NET"
 heuristic = true
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol( $version) ]($style)'
 
 [docker_context]
 symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [elixir]
 symbol = " "
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [elm]
 symbol = " "
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [env_var]
 disabled = true
@@ -176,8 +176,8 @@ asia-northeast1 = "an1"
 
 [git_branch]
 symbol = " " # ""
-style = "bg:color_aqua"
-format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+style = "fg:color_fg0 bg:color_aqua"
+format = '[ $symbol $branch ]($style)'
 
 [git_commit]
 commit_hash_length = 7
@@ -187,8 +187,8 @@ format = "[\\($hash\\)]($style) "
 [git_state]
 cherry_pick = " PICKING"
 disabled = false
-style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+style = "fg:color_fg0 bg:color_aqua"
+format = '[($all_status$ahead_behind )]($style)'
 
 [git_status]
 disabled = false
@@ -201,27 +201,28 @@ staged = '[\($count\)](bold color_green bg:color_aqua)'
 stashed = '[\($count\)](bold color_yellow bg:color_aqua)'
 modified = '[\($count\)](bold color_red bg:color_aqua)'
 renamed = "renamed"
-style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:color_aqua)]($style)'
+style = "fg:#769ff0 bg:color_aqua"
+format = '[($all_status$ahead_behind )]($style)'
 
 [golang]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol( $version) ]($style)'
 
 [hg_branch]
 symbol = " "
 
 [hostname]
 ssh_only = true
-format = "⟪ [$hostname]($style)⟫ in "
+format = "[⟪ $hostname⟫ in ]($style)"
+style = "bg:color_blue"
 trim_at = "."
 disabled = false
 
 [kotlin]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol( $version) ]($style)'
 
 [kubernetes]
 symbol = "☸ "
@@ -229,13 +230,13 @@ format = "on [$symbol$context \\($namespace\\)](dimmed green) "
 disabled = false
 [kubernetes.context_aliases]
 "dev.local.cluster.k8s" = "dev"
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [haskell]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol( $version) ]($style)'
 
 [jobs]
 disabled = false
@@ -246,13 +247,13 @@ style = "bold dimmed bg:color_bg1"
 
 [java]
 symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol( $version) ]($style)'
 
 [julia]
 symbol = " "
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [line_break]
 disabled = false
@@ -267,22 +268,23 @@ format = '[$symbol ${ram}( | ${swap})]($style)'
 
 [nim]
 symbol = " "
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [nix_shell]
 symbol = " "
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol( $version) ]($style)'
 
 [os]
 disabled = false
 style = "bg:color_orange fg:color_fg0"
+format = '[$symbol]($style)'
 
 [os.symbols]
 Windows = "󰍲"
@@ -311,52 +313,52 @@ format = "via [$symbol $version](208 bold) "
 
 [perl]
 symbol = " "
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [php]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol( $version) ]($style)'
 
 [python]
 symbol = " "
 pyenv_version_name = false
 pyenv_prefix = "pyenv "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol( $version) ]($style)'
 
 [ruby]
 symbol = " "
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol( $version) ]($style)'
 
 [shlvl]
 disabled = false
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol ( $shlvl )](fg:color_fg0 bg:color_blue)]($style)'
+style = "fg:color_fg0 bg:color_blue"
+format = '[ $symbol ( $shlvl )]($style)'
 threshold = 3
 
 [singularity]
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [status]
 disabled = false
 symbol = " "
-style = "bold bg:color_bg1"
-format = '[[$symbol( $status)](bold fg:color_red bg:color_bg1)]($style)'
+style = "bold fg:color_red bg:color_bg1"
+format = '[$symbol( $status)]($style)'
 
 [swift]
 symbol = "ﯣ "
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+style = "fg:#83a598 bg:color_bg3"
+format = '[ $symbol( $context) ]($style)'
 
 [time]
 disabled = false
