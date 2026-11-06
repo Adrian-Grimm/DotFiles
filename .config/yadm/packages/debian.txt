@@ -1,0 +1,17 @@
+bat
+btop
+curl
+eza
+fd-find
+fzf
+git
+git-delta
+htop
+neovim
+nano
+ripgrep
+shellcheck
+tmux
+wget
+zoxide
+zsh

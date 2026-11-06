@@ -1,0 +1,4 @@
+# Syntax highlighting shipped with Homebrew nano
+include "/opt/homebrew/share/nano/*.nanorc"
+set linenumbers
+set mouse

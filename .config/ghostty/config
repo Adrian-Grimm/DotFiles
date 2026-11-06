@@ -20,3 +20,4 @@ macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = left
 macos-icon = glass
 macos-icon-screen-color = #0A1B1B
+shell-integration-features = ssh-terminfo,ssh-env
